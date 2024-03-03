@@ -15,7 +15,7 @@ class CityRepository
         }
     }
 
-    async deletecity({cityId})
+    async deleteCity({cityId})
     {
         try{
             await City.destroy({
@@ -32,7 +32,7 @@ class CityRepository
             throw {error};
         }
     }
-    async updatecity(cityId,data)
+    async updateCity(cityId,data)
     {
         try
         {
@@ -50,7 +50,7 @@ class CityRepository
         }
     }
 
-    async getcity(cityId) {
+    async getCity(cityId) {
         try
         {
             const city = await City.findByPk(cityId);
