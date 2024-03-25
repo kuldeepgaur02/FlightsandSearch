@@ -104,27 +104,23 @@ const update =async (req,resp)=>
     
 }
 
-const getAll = async(req,resp)=>
-{
-    try{
-        const cities = await cityService.getAllCities();
-        return resp.status(200).json({
-            data : cities,
-            success : true,
-            message : 'successfully fetched  the cities',
-            error:{}
-
+const getAll = async (req, res) => {
+    try {
+        const cities = await cityService.getAllCities(req.query);
+        return res.status(200).json({
+            data: cities,
+            success: true,
+            message: 'Successfully fetched all cities',
+            err: {}
         });
-    }
-    catch(error){
+    } catch (error) {
         console.log(error);
-        return resp.status(500).json({
-            data :{},
-            success:false,
-            message : 'not able to getAll the cities',
-            err:error
+        return res.status(500).json({
+            data: {},
+            success: false,
+            message: 'Not able to fetch the cities',
+            err: error
         });
-
     }
 }
 
